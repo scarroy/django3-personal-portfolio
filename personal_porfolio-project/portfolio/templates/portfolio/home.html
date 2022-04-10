@@ -1,0 +1,15 @@
+<html>
+    <h3>this is the home page</h3>
+</html>
+
+<!.. django templating language ..>
+{% for project in projects %}
+{{ project.title }}
+<br>
+<p>{{ project.description }}</p>
+<img src="{{ project.image.url }}" height="25%">
+{% if project.url %}
+<br>
+<a href="{{ project.url }}">Link</a>
+{% endif %}
+{% endfor %}
