@@ -1,8 +1,19 @@
-<html>
-    <h3>this is the home page</h3>
-</html>
+{% extends 'portfolio/base.html' %}
 
-<!.. django templating language ..>
+{% block content %}
+
+<h3>this is the portfolio home page</h3>
+
+{% load static %}
+
+<a href="{% static 'portfolio/pdfFile.pdf' %}">PDF File</a>
+
+<br><br>
+<img src="{% static 'portfolio/cert.png' %}" height="100" >
+
+<br><br>
+
+<!-- django templating language -->
 {% for project in projects %}
 {{ project.title }}
 <br>
@@ -13,3 +24,5 @@
 <a href="{{ project.url }}">Link</a>
 {% endif %}
 {% endfor %}
+
+{% endblock %}

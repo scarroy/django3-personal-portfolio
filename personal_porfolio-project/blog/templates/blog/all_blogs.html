@@ -1,1 +1,22 @@
-Hello blog
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+
+    <h3>this is the Blogs page</h3>
+
+
+<h3>There are {{ blogs.count }} blog{{ blogs.count | pluralize }}</h3>
+
+<!.. django templating language ..>
+{% for blog in blogs %}
+<a href="{% url 'blog:detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
+<p>{{ blog.description |striptags| truncatechars:50 }}</p>
+<h5><p>{{ blog.date | date:'M d Y' }}</p></h5>
+{% if project.url %}
+<br>
+<a href="{{ blog.url }}">Link</a>
+{% endif %}
+{% endfor %}
+
+{% endblock %}
